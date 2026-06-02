@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: var(--surface-pure); }
+  .wrap { padding: 22px 24px; display: flex; gap: 12px; }
+  .chip { flex: 1; border-radius: var(--r-md); padding: 16px; }
+  .on { background: var(--blue-600); box-shadow: var(--shadow-chip); }
+  .off { background: var(--surface); border: 1px solid var(--blue-300); }
+  .lv { font-size: 16px; font-weight: 700; }
+  .on .lv { color: var(--accent-yellow); }
+  .off .lv { color: var(--ink-700); }
+  .sub { font-size: 12px; margin-top: 8px; }
+  .on .sub { color: var(--blue-400); }
+  .off .sub { color: var(--ink-400); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="chip on"><div class="lv">초급</div><div class="sub">짧고 간단한 통화</div></div>
+    <div class="chip off"><div class="lv">중급</div><div class="sub">예상 외 상황 포함</div></div>
+    <div class="chip off"><div class="lv">고급</div><div class="sub">실전과 동일</div></div>
+  </div>
+</body>
+</html>
