@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: var(--surface-pure); }
+  .wrap { padding: 22px 24px; }
+  .row { display: flex; gap: 14px; }
+  .sw { flex: 1; }
+  .chip { height: 64px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.06); }
+  .nm { font-size: 12px; font-weight: 700; color: var(--ink-700); margin-top: 9px; }
+  .hex { font-family: var(--font-num); font-size: 11px; color: var(--ink-400); margin-top: 2px; }
+  .use { font-size: 10.5px; color: var(--ink-400); margin-top: 4px; line-height: 1.35; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="row">
+      <div class="sw"><div class="chip" style="background:var(--ink-900)"></div><div class="nm">Ink / 900</div><div class="hex">#000000</div><div class="use">header page-title only</div></div>
+      <div class="sw"><div class="chip" style="background:var(--ink-700)"></div><div class="nm">Ink / 700</div><div class="hex">#373B45</div><div class="use">primary body + bold labels</div></div>
+      <div class="sw"><div class="chip" style="background:var(--ink-500)"></div><div class="nm">Ink / 500</div><div class="hex">#858B98</div><div class="use">tertiary text</div></div>
+      <div class="sw"><div class="chip" style="background:var(--ink-400)"></div><div class="nm">Ink / 400</div><div class="hex">#AEB4C3</div><div class="use">muted · inactive · locked</div></div>
+      <div class="sw"><div class="chip" style="background:var(--line-200)"></div><div class="nm">Line / 200</div><div class="hex">#E5E7EB</div><div class="use">neutral hairline</div></div>
+    </div>
+  </div>
+</body>
+</html>
