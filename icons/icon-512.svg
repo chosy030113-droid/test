@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#3c70ff"/>
+  <circle cx="256" cy="208" r="74" fill="none" stroke="white" stroke-width="22"/>
+  <path d="M192 266 Q160 340 180 372 Q202 400 234 390 Q256 380 266 356" fill="none" stroke="white" stroke-width="22" stroke-linecap="round"/>
+  <line x1="288" y1="160" x2="336" y2="112" stroke="white" stroke-width="18" stroke-linecap="round"/>
+  <line x1="314" y1="192" x2="372" y2="170" stroke="white" stroke-width="18" stroke-linecap="round"/>
+  <line x1="288" y1="224" x2="346" y2="242" stroke="white" stroke-width="18" stroke-linecap="round"/>
+  <text x="256" y="462" font-family="sans-serif" font-weight="700" font-size="58" fill="white" text-anchor="middle">콜포비아</text>
+</svg>
