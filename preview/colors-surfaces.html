@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: #eef1f4; }
+  .wrap { padding: 22px 24px; }
+  .row { display: flex; gap: 14px; }
+  .sw { flex: 1; }
+  .chip { height: 64px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.08); }
+  .nm { font-size: 12px; font-weight: 700; color: var(--ink-700); margin-top: 9px; }
+  .hex { font-family: var(--font-num); font-size: 11px; color: var(--ink-400); margin-top: 2px; }
+  .use { font-size: 10.5px; color: var(--ink-400); margin-top: 4px; line-height: 1.35; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="row">
+      <div class="sw"><div class="chip" style="background:var(--bg)"></div><div class="nm">Background</div><div class="hex">#FAFDFD</div><div class="use">app canvas — cool near-white</div></div>
+      <div class="sw"><div class="chip" style="background:var(--surface)"></div><div class="nm">Surface</div><div class="hex">#FCFCFE</div><div class="use">cards · rows · tab bar</div></div>
+      <div class="sw"><div class="chip" style="background:var(--surface-pure)"></div><div class="nm">Surface / Pure</div><div class="hex">#FFFFFF</div><div class="use">top header bar</div></div>
+    </div>
+  </div>
+</body>
+</html>
