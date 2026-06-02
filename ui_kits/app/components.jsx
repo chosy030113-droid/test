@@ -15,21 +15,6 @@ function Icon({ name, size = 20, color, strokeWidth = 2, style }) {
   );
 }
 
-// ---- Status bar (375px) ----
-function StatusBar({ tone = "dark" }) {
-  const color = tone === "dark" ? "var(--ink-900)" : "var(--ink-700)";
-  return (
-    <div style={kitS.statusbar}>
-      <span style={{ fontFamily: "var(--font-num)", fontWeight: 700, fontSize: 14, letterSpacing: "-0.02em", color }}>9:41</span>
-      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-        <Icon name="signal" size={17} color={color} />
-        <Icon name="wifi" size={17} color={color} />
-        <Icon name="battery-full" size={22} color={color} />
-      </div>
-    </div>
-  );
-}
-
 // ---- Header with optional back chevron + centered title ----
 function Header({ title, onBack, bg = "var(--bg)" }) {
   return (
@@ -75,7 +60,6 @@ function BottomNav({ active = "practice", onChange }) {
 }
 
 const kitS = {
-  statusbar: { height: 48, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 28px", flexShrink: 0 },
   header: { height: 56, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 12px", flexShrink: 0 },
   backBtn: { width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", background: "none", border: "none", cursor: "pointer", padding: 0 },
   badge: { fontFamily: "var(--font-ui)", fontSize: 10, lineHeight: "15px", color: "var(--blue-500)", border: "1px solid var(--blue-300)", borderRadius: 4, padding: "4px 8px", whiteSpace: "nowrap" },
@@ -83,4 +67,4 @@ const kitS = {
   navItem: { flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, background: "none", border: "none", cursor: "pointer", paddingTop: 12 },
 };
 
-Object.assign(window, { Icon, StatusBar, Header, Badge, BottomNav, kitS });
+Object.assign(window, { Icon, Header, Badge, BottomNav, kitS });
