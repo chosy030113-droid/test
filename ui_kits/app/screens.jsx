@@ -23,7 +23,6 @@ function PracticeScreen({ onOpenScenario }) {
 
   return (
     <div style={scS.screen}>
-      <StatusBar tone="muted" />
       <Header title="연습하기" onBack={() => {}} />
 
       {/* segmented tabs */}
@@ -118,7 +117,6 @@ const ROADMAP = [
 function RoadmapScreen({ scenario, onBack, onStart }) {
   return (
     <div style={scS.screen}>
-      <StatusBar tone="dark" />
       <Header title={scenario.name} onBack={onBack} bg="var(--surface-pure)" />
 
       <div style={scS.scroll}>
@@ -162,7 +160,7 @@ function RoadmapScreen({ scenario, onBack, onStart }) {
 }
 
 const scS = {
-  screen: { width: 375, height: 812, background: "var(--bg)", display: "flex", flexDirection: "column", fontFamily: "var(--font-ui)", overflow: "hidden" },
+  screen: { width: 375, height: 812, background: "var(--bg)", display: "flex", flexDirection: "column", fontFamily: "var(--font-ui)", overflow: "hidden", paddingTop: "env(safe-area-inset-top, 0px)" },
   scroll: { flex: 1, overflowY: "auto", padding: "24px 24px 16px" },
   h2: { fontSize: 16, fontWeight: 700, color: "var(--ink-700)", marginBottom: 14 },
   tab: { flex: 1, textAlign: "center", padding: "16px 0", fontSize: 16, fontFamily: "var(--font-ui)", background: "none", border: "none", cursor: "pointer" },
