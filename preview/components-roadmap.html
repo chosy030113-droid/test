@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: var(--surface-pure); }
+  .wrap { padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; }
+  .row { display: flex; align-items: center; justify-content: space-between; border-radius: var(--r-md); padding: 16px; }
+  .done { background: var(--surface); border: 1px solid var(--blue-500); }
+  .active { background: var(--blue-600); }
+  .lock { background: var(--surface); border: 1px solid var(--blue-300); }
+  .lab { font-size: 14px; }
+  .done .lab { color: var(--ink-700); }
+  .active .lab { color: var(--accent-yellow); font-weight: 700; }
+  .lock .lab { color: var(--ink-400); }
+  .ic { width: 16px; height: 16px; }
+  .circle { width: 22px; height: 22px; border-radius: 50%; background: var(--blue-600); display: flex; align-items: center; justify-content: center; }
+  .circle i { width: 13px; height: 13px; color: #fff; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="row done"><div class="lab">레벨 1 · 완료됨</div><div class="circle"><i data-lucide="check"></i></div></div>
+    <div class="row active"><div class="lab">레벨 2 · 진행 중</div><i data-lucide="arrow-right" class="ic" style="color:#fff"></i></div>
+    <div class="row lock"><div class="lab">레벨 3 · 잠김</div><i data-lucide="lock" class="ic" style="color:var(--ink-400)"></i></div>
+  </div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
