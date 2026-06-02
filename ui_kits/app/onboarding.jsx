@@ -98,7 +98,6 @@ function AnxietyScreen({ onBack, onNext }) {
 
   return (
     <div style={scS.screen}>
-      <StatusBar tone="muted" />
       <div style={obS.body}>
         <ProgressBar step={2} total={3} onBack={onBack} />
         <PageIntro title={"어떤 상황이 가장\n부담스러우신가요?"} sub="해당하는 것을 모두 선택해 주세요" />
@@ -123,7 +122,6 @@ function NotifyScreen({ onBack, onNext }) {
 
   return (
     <div style={scS.screen}>
-      <StatusBar tone="muted" />
       <div style={obS.body}>
         <ProgressBar step={3} total={3} onBack={onBack} />
         <PageIntro title="연습 알림을 설정해 주세요" sub="매일 연습 시간을 알려드릴게요" />
