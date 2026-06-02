@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: var(--bg); }
+  .wrap { padding: 24px; display: flex; gap: 16px; }
+  .card { position: relative; width: 148px; height: 148px; border: 2px solid; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; box-sizing: border-box; }
+  .card.idle { background: var(--surface); border-color: var(--line-100); }
+  .card.sel  { background: var(--blue-200); border-color: var(--blue-600); }
+  .chip { width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+  .idle .chip { background: var(--line-100); color: var(--ink-400); }
+  .sel .chip  { background: var(--blue-600); color: #fff; }
+  .lbl { font-size: 14px; line-height: 20px; }
+  .idle .lbl { color: var(--ink-700); }
+  .sel .lbl  { color: var(--blue-600); font-weight: 500; }
+  .check { position: absolute; top: 14px; right: 14px; width: 22px; height: 22px; border-radius: 50%; background: var(--blue-600); color: #fff; display: flex; align-items: center; justify-content: center; }
+  .ic { width: 20px; height: 20px; }
+  .ic-sm { width: 12px; height: 12px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card idle"><span class="chip"><i data-lucide="phone-off" class="ic"></i></span><span class="lbl">모르는 번호 수신</span></div>
+    <div class="card sel"><span class="check"><i data-lucide="check" class="ic-sm"></i></span><span class="chip"><i data-lucide="send" class="ic"></i></span><span class="lbl">낯선 곳에 발신</span></div>
+    <div class="card idle"><span class="chip"><i data-lucide="briefcase" class="ic"></i></span><span class="lbl">업무 전화</span></div>
+    <div class="card idle"><span class="chip"><i data-lucide="phone-missed" class="ic"></i></span><span class="lbl">통화 종료하기</span></div>
+  </div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
