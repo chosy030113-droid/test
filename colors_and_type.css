@@ -1,0 +1,81 @@
+/* ============================================================
+   콜포비아 연습 앱 — Design Tokens
+   Call-phobia practice app · Colors + Type
+   Source: Figma "4-1 uxui 조서영(edit)" — Page-1 (2 frames)
+   ============================================================ */
+
+/* Roboto = product UI typeface · Inter = status-bar numerals only */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@600;700&display=swap');
+
+:root {
+  /* ---------- BRAND / PRIMARY BLUE SCALE ---------- */
+  --blue-600: #3c70ff;   /* rgb(60,112,255)  primary — CTAs, active nav, headers, filled cards */
+  --blue-500: #6991ff;   /* rgb(105,145,255) progress track, active-card border */
+  --blue-400: #a0baff;   /* rgb(160,186,255) sub-text on blue cards */
+  --blue-300: #cedbff;   /* rgb(206,219,255) default card/border stroke, divider rules */
+  --blue-200: #e0e8ff;   /* rgb(224,232,255) selected option-card tint fill (onboarding) */
+
+  /* ---------- NEUTRALS / TEXT ---------- */
+  --ink-900:  #000000;   /* page titles in header (배달 문의) */
+  --ink-700:  #373b45;   /* rgb(55,59,69)   primary body + bold labels */
+  --ink-500:  #858b98;   /* rgb(133,139,152) tertiary text */
+  --ink-400:  #aeb4c3;   /* rgb(174,180,195) muted labels, inactive nav, locked rows */
+  --line-200: #e5e7eb;   /* rgb(229,231,235) neutral hairline (home-screen nav border) */
+  --line-100: #edf0f6;   /* rgb(237,240,246) option-card stroke + idle icon-chip fill */
+  --line-300: #cbd2e3;   /* rgb(203,210,227) toggle OFF track */
+
+  /* ---------- SURFACES ---------- */
+  --bg:       #fafdfd;   /* rgb(250,253,253) app background (cool near-white) */
+  --surface:  #fcfcfe;   /* rgb(252,252,254) cards, tab bar, list rows */
+  --surface-pure: #ffffff; /* pure white header bar */
+
+  /* ---------- ACCENTS (used ONLY on the blue card) ---------- */
+  --accent-green:  #8dffc3; /* rgb(141,255,195) progress fill */
+  --accent-yellow: #fff46c; /* rgb(255,244,108) "진행 중" highlight on blue */
+
+  /* ---------- RADII ---------- */
+  --r-pill: 9999px;
+  --r-xl:   16px;   /* onboarding option cards */
+  --r-lg:   12px;   /* hero blue card */
+  --r-md:   8px;    /* difficulty chips, roadmap rows */
+  --r-sm:   6px;    /* scenario list rows */
+  --r-xs:   4px;    /* difficulty badges (초급/중급/고급) */
+
+  /* ---------- SHADOWS ---------- */
+  --shadow-card:  0 1px 2px 0 rgba(0,0,0,0.05);  /* hero card lift */
+  --shadow-chip:  1px 1px 5px 0 rgba(0,0,0,0.10); /* selected difficulty chip */
+
+  /* ---------- SPACING (4pt base) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* ---------- TYPE TOKENS ---------- */
+  --font-ui:   'Roboto', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-num:  'Inter', 'Roboto', sans-serif;
+
+  /* role / size / weight / line-height (px values straight from Figma) */
+  --t-heading-size: 18px; --t-heading-weight: 500; --t-heading-lh: 28px; /* hero card title */
+  --t-section-size: 18px; --t-section-weight: 400; --t-section-lh: 28px; /* 레벨 로드맵 */
+  --t-title-size:   16px; --t-title-weight:   700; --t-title-lh:   24px; /* 난이도 선택, header */
+  --t-body-size:    16px; --t-body-weight:    400; --t-body-lh:    24px; /* scenario name */
+  --t-sub-size:     14px; --t-sub-weight:     400; --t-sub-lh:   22.75px;/* card description, roadmap row */
+  --t-meta-size:    12px; --t-meta-weight:    400; --t-meta-lh:    16px; /* chip subtitle */
+  --t-caption-size: 10px; --t-caption-weight: 400; --t-caption-lh:  15px; /* badges, nav labels */
+}
+
+/* ============================================================
+   SEMANTIC TYPE CLASSES
+   ============================================================ */
+.ds-heading { font-family: var(--font-ui); font-size: var(--t-heading-size); font-weight: var(--t-heading-weight); line-height: var(--t-heading-lh); color: var(--surface); }
+.ds-section { font-family: var(--font-ui); font-size: var(--t-section-size); font-weight: var(--t-section-weight); line-height: var(--t-section-lh); color: var(--ink-900); }
+.ds-title   { font-family: var(--font-ui); font-size: var(--t-title-size);   font-weight: var(--t-title-weight);   line-height: var(--t-title-lh);   color: var(--ink-700); }
+.ds-body    { font-family: var(--font-ui); font-size: var(--t-body-size);    font-weight: var(--t-body-weight);    line-height: var(--t-body-lh);    color: var(--ink-700); }
+.ds-sub     { font-family: var(--font-ui); font-size: var(--t-sub-size);     font-weight: var(--t-sub-weight);     line-height: var(--t-sub-lh);     color: var(--ink-400); }
+.ds-meta    { font-family: var(--font-ui); font-size: var(--t-meta-size);    font-weight: var(--t-meta-weight);    line-height: var(--t-meta-lh);    color: var(--ink-400); }
+.ds-caption { font-family: var(--font-ui); font-size: var(--t-caption-size); font-weight: var(--t-caption-weight); line-height: var(--t-caption-lh); color: var(--ink-400); }
+.ds-num     { font-family: var(--font-num); font-weight: 700; font-size: 14px; line-height: 20px; letter-spacing: -0.02em; color: var(--ink-900); }
