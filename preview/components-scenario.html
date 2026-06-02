@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: var(--surface-pure); }
+  .wrap { padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; }
+  .row { display: flex; align-items: center; justify-content: space-between; background: var(--surface); border: 1px solid var(--blue-300); border-radius: var(--r-sm); padding: 16px; }
+  .name { font-size: 16px; color: var(--ink-700); }
+  .right { display: flex; align-items: center; gap: 10px; }
+  .badge { font-size: 10px; color: var(--blue-500); border: 1px solid var(--blue-300); border-radius: var(--r-xs); padding: 4px 8px; line-height: 15px; }
+  .chev { color: var(--blue-600); width: 16px; height: 16px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="row"><div class="name">배달 문의</div><div class="right"><span class="badge">초급</span><i data-lucide="chevron-right" class="chev"></i></div></div>
+    <div class="row"><div class="name">면접 결과 통보</div><div class="right"><span class="badge">중급</span><i data-lucide="chevron-right" class="chev"></i></div></div>
+    <div class="row"><div class="name">관공서 문의</div><div class="right"><span class="badge">고급</span><i data-lucide="chevron-right" class="chev"></i></div></div>
+  </div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
