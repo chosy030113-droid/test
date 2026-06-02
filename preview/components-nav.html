@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: #eef1f4; }
+  .wrap { padding: 22px 24px; }
+  .nav { display: flex; background: var(--surface); border: 1px solid var(--line-200); border-radius: 14px; padding: 10px 8px; }
+  .item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .item i { width: 22px; height: 22px; }
+  .lab { font-size: 10px; }
+  .active i, .active .lab { color: var(--blue-600); }
+  .active .lab { font-weight: 700; }
+  .idle i, .idle .lab { color: var(--ink-400); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="item active"><i data-lucide="home"></i><span class="lab">홈</span></div>
+      <div class="item idle"><i data-lucide="mic"></i><span class="lab">연습하기</span></div>
+      <div class="item idle"><i data-lucide="phone-call"></i><span class="lab">통화 보조</span></div>
+      <div class="item idle"><i data-lucide="user"></i><span class="lab">마이페이지</span></div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
