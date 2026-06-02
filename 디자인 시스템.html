@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>콜포비아 연습 앱 — 디자인 시스템</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font-ui); background: var(--bg); color: var(--ink-700); }
+  .page { max-width: 1040px; margin: 0 auto; padding: 56px 40px 100px; }
+
+  /* masthead */
+  .mast { border-bottom: 1px solid var(--blue-300); padding-bottom: 28px; margin-bottom: 48px; }
+  .eyebrow { font-family: var(--font-num); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue-600); font-weight: 700; }
+  h1 { font-size: 40px; font-weight: 700; margin: 12px 0 10px; color: var(--ink-900); letter-spacing: -0.01em; }
+  .lede { font-size: 15px; line-height: 1.6; color: var(--ink-500); max-width: 620px; }
+
+  section { margin-bottom: 56px; }
+  .sec-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 22px; }
+  .sec-num { font-family: var(--font-num); font-size: 12px; color: var(--blue-400); font-weight: 700; }
+  h2 { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-500); margin: 0; }
+  .sec-rule { flex: 1; height: 1px; background: var(--blue-300); }
+
+  .grid { display: grid; gap: 16px; }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .g5 { grid-template-columns: repeat(5, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g2 { grid-template-columns: 1fr 1fr; }
+
+  /* swatches */
+  .sw .chip { height: 76px; border-radius: 10px; border: 1px solid rgba(0,0,0,.06); }
+  .sw .nm { font-size: 12.5px; font-weight: 700; margin-top: 10px; }
+  .sw .hex { font-family: var(--font-num); font-size: 11px; color: var(--ink-400); margin-top: 2px; }
+  .sw .use { font-size: 10.5px; color: var(--ink-400); margin-top: 5px; line-height: 1.4; }
+
+  /* cards */
+  .card { background: var(--surface); border: 1px solid var(--blue-300); border-radius: 14px; padding: 22px; }
+  .card-label { font-size: 11px; font-weight: 700; color: var(--ink-400); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 16px; }
+
+  /* type specimen */
+  .spec { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 8px 18px; padding: 11px 0; border-bottom: 1px solid #eef0f4; }
+  .spec:last-child { border-bottom: none; }
+  .spec .lab { text-align: right; font-family: var(--font-num); font-size: 10.5px; color: var(--ink-400); white-space: nowrap; }
+
+  /* spacing */
+  .sp-item, .rd-item { display: flex; flex-direction: column; align-items: center; gap: 9px; }
+  .sp-box { background: var(--blue-300); border-radius: 3px; }
+  .rd-box { width: 100%; height: 56px; background: var(--surface); border: 1px solid var(--blue-300); }
+  .sp-nm { font-size: 11px; font-weight: 700; }
+  .sp-px { font-family: var(--font-num); font-size: 10px; color: var(--ink-400); }
+
+  /* components */
+  .hero { background: var(--blue-600); border-radius: 12px; padding: 20px; box-shadow: var(--shadow-card); }
+  .hero .t { font-size: 18px; font-weight: 500; color: var(--surface); }
+  .hero .t .y { color: var(--accent-yellow); font-weight: 700; }
+  .track { height: 10px; border-radius: 9999px; background: var(--blue-500); margin: 14px 0 12px; overflow: hidden; }
+  .fill { height: 100%; width: 40%; background: var(--accent-green); border-radius: 9999px; }
+  .hero .d { font-size: 14px; line-height: 22px; color: var(--blue-400); }
+
+  .chip-row { display: flex; gap: 10px; }
+  .dchip { flex: 1; border-radius: 8px; padding: 16px; }
+  .dchip.on { background: var(--blue-600); box-shadow: var(--shadow-chip); }
+  .dchip.off { background: var(--surface); border: 1px solid var(--blue-300); }
+  .dchip .lv { font-size: 16px; font-weight: 700; }
+  .dchip.on .lv { color: var(--accent-yellow); } .dchip.off .lv { color: var(--ink-700); }
+  .dchip .s { font-size: 12px; margin-top: 8px; } .dchip.on .s { color: var(--blue-400); } .dchip.off .s { color: var(--ink-400); }
+
+  .lrow { display: flex; align-items: center; justify-content: space-between; padding: 16px; border-radius: 8px; margin-bottom: 10px; }
+  .lrow:last-child { margin-bottom: 0; }
+  .lrow.done { background: var(--surface); border: 1px solid var(--blue-500); }
+  .lrow.active { background: var(--blue-600); }
+  .lrow.lock { background: var(--surface); border: 1px solid var(--blue-300); }
+  .lrow .l { font-size: 14px; } .lrow.done .l { color: var(--ink-700); } .lrow.active .l { color: var(--accent-yellow); font-weight: 700; } .lrow.lock .l { color: var(--ink-400); }
+  .circle { width: 22px; height: 22px; border-radius: 50%; background: var(--blue-600); display: flex; align-items: center; justify-content: center; }
+  .ic { width: 16px; height: 16px; }
+
+  .srow { display: flex; align-items: center; justify-content: space-between; background: var(--surface); border: 1px solid var(--blue-300); border-radius: 6px; padding: 16px; margin-bottom: 10px; }
+  .srow .nm { font-size: 16px; color: var(--ink-700); }
+  .badge { font-size: 10px; color: var(--blue-500); border: 1px solid var(--blue-300); border-radius: 4px; padding: 4px 8px; line-height: 15px; white-space: nowrap; }
+  .meta { display: flex; align-items: center; gap: 10px; }
+
+  .btn { height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+  .btn.primary { background: var(--blue-600); color: #fff; box-shadow: var(--shadow-card); }
+  .btn.secondary { background: var(--surface); color: var(--blue-600); border: 1px solid var(--blue-300); }
+  .btn.ghost { color: var(--ink-400); }
+
+  .nav { display: flex; background: var(--surface); border: 1px solid var(--line-200); border-radius: 14px; padding: 10px 8px; }
+  .nitem { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .nitem i { width: 22px; height: 22px; }
+  .nitem .nl { font-size: 10px; }
+
+  .pill { font-size: 11px; border-radius: 9999px; padding: 5px 12px; font-weight: 700; }
+  .p-done { background: rgba(60,112,255,.10); color: var(--blue-600); }
+  .p-prog { background: var(--blue-600); color: var(--accent-yellow); }
+  .p-lock { background: #eef0f4; color: var(--ink-400); }
+
+  .tabs { display: flex; } .tabbtn { flex: 1; text-align: center; padding: 14px 0; font-size: 15px; }
+  .tabbtn.act { font-weight: 700; color: var(--ink-700); } .tabbtn.idle { color: var(--ink-400); }
+  .tabtrack { position: relative; height: 2px; background: var(--blue-300); }
+  .tabink { position: absolute; top: 0; left: 0; width: 50%; height: 2px; background: var(--blue-600); }
+
+  .kit-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 14px; font-weight: 700; color: var(--blue-600); text-decoration: none; padding: 12px 18px; border: 1px solid var(--blue-300); border-radius: 10px; background: var(--surface); }
+  @media (max-width: 720px) { .g4,.g5,.g3 { grid-template-columns: 1fr 1fr; } .g2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="mast">
+      <div class="eyebrow">Design System</div>
+      <h1>콜포비아 연습 앱</h1>
+      <p class="lede">전화가 두려운 사람이 단계별 시나리오로 통화를 연습하는 모바일 앱. 차분하고 격려하는 단일 블루 시스템, Roboto 타입, 부드러운 스트로크, 게임화된 레벨 상태(<b>완료됨 · 진행 중 · 잠김</b>)가 핵심입니다.</p>
+    </div>
+
+    <!-- COLORS -->
+    <section>
+      <div class="sec-head"><span class="sec-num">01</span><h2>Color</h2><div class="sec-rule"></div></div>
+
+      <div class="card-label" style="margin-bottom:12px">Primary blue scale</div>
+      <div class="grid g4" style="margin-bottom:28px">
+        <div class="sw"><div class="chip" style="background:var(--blue-600)"></div><div class="nm">Primary / 600</div><div class="hex">#3C70FF</div><div class="use">CTA · active nav · hero · header</div></div>
+        <div class="sw"><div class="chip" style="background:var(--blue-500)"></div><div class="nm">Blue / 500</div><div class="hex">#6991FF</div><div class="use">progress track · active border</div></div>
+        <div class="sw"><div class="chip" style="background:var(--blue-400)"></div><div class="nm">Blue / 400</div><div class="hex">#A0BAFF</div><div class="use">sub-text on blue</div></div>
+        <div class="sw"><div class="chip" style="background:var(--blue-300)"></div><div class="nm">Blue / 300</div><div class="hex">#CEDBFF</div><div class="use">default stroke · dividers</div></div>
+      </div>
+
+      <div class="card-label" style="margin-bottom:12px">Neutrals · Surfaces · Accents</div>
+      <div class="grid g5">
+        <div class="sw"><div class="chip" style="background:var(--ink-700)"></div><div class="nm">Ink / 700</div><div class="hex">#373B45</div><div class="use">body · bold labels</div></div>
+        <div class="sw"><div class="chip" style="background:var(--ink-400)"></div><div class="nm">Ink / 400</div><div class="hex">#AEB4C3</div><div class="use">muted · locked</div></div>
+        <div class="sw"><div class="chip" style="background:var(--bg);border:1px solid var(--blue-300)"></div><div class="nm">Background</div><div class="hex">#FAFDFD</div><div class="use">app canvas</div></div>
+        <div class="sw"><div class="chip" style="background:var(--accent-green)"></div><div class="nm">Accent / green</div><div class="hex">#8DFFC3</div><div class="use">progress fill *</div></div>
+        <div class="sw"><div class="chip" style="background:var(--accent-yellow)"></div><div class="nm">Accent / yellow</div><div class="hex">#FFF46C</div><div class="use">active label *</div></div>
+      </div>
+      <div class="use" style="font-size:11px;color:var(--ink-400);margin-top:12px">* 액센트 두 색은 <b>채워진 블루 카드 안에서만</b> 사용합니다 — 흰 배경 위에서는 쓰지 않습니다.</div>
+    </section>
+
+    <!-- TYPE -->
+    <section>
+      <div class="sec-head"><span class="sec-num">02</span><h2>Typography</h2><div class="sec-rule"></div></div>
+      <div class="grid g2">
+        <div class="card">
+          <div class="card-label">Scale · Roboto</div>
+          <div class="spec"><div class="ds-section" style="color:var(--ink-900)">레벨 로드맵</div><div class="lab">Section · 18 / 28 · Regular</div></div>
+          <div class="spec"><div style="font-size:18px;font-weight:500;color:var(--blue-600)">레벨 2 · 전화 배달 주문하기</div><div class="lab">Heading · 18 · Medium</div></div>
+          <div class="spec"><div class="ds-title">난이도 선택</div><div class="lab">Title · 16 · Bold</div></div>
+          <div class="spec"><div class="ds-body">배달 문의</div><div class="lab">Body · 16 · Regular</div></div>
+          <div class="spec"><div class="ds-sub">간단한 용건을 전달하는 연습입니다.</div><div class="lab">Sub · 14 · Regular</div></div>
+          <div class="spec"><div class="ds-meta">짧고 간단한 통화</div><div class="lab">Meta · 12 · Regular</div></div>
+          <div class="spec"><div style="font-size:10px;color:var(--blue-500)">초급</div><div class="lab">Caption · 10 · Regular</div></div>
+        </div>
+        <div class="card">
+          <div class="card-label">Families</div>
+          <div style="font-size:42px;font-weight:700;line-height:1;color:var(--ink-700)">연습하기 Ag 한</div>
+          <div style="font-size:12px;font-weight:700;margin-top:12px">Roboto</div>
+          <div style="font-size:11px;color:var(--ink-400);margin-top:4px;line-height:1.45">제품 UI 전용. 한글은 Apple SD Gothic Neo / Malgun Gothic 폴백.</div>
+          <div style="font-family:var(--font-num);font-size:11px;color:var(--blue-500);margin-top:6px">Regular 400 · Medium 500 · Bold 700</div>
+          <div style="font-family:var(--font-num);font-size:34px;font-weight:700;letter-spacing:-.02em;margin-top:22px;color:var(--ink-900)">9:41</div>
+          <div style="font-size:12px;font-weight:700;margin-top:10px">Inter</div>
+          <div style="font-size:11px;color:var(--ink-400);margin-top:4px">상태바 시간 숫자에만 사용.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPACING -->
+    <section>
+      <div class="sec-head"><span class="sec-num">03</span><h2>Spacing · Radius · Shadow</h2><div class="sec-rule"></div></div>
+      <div class="grid g2">
+        <div class="card">
+          <div class="card-label">Spacing · 4pt base</div>
+          <div style="display:flex;gap:14px;align-items:flex-end">
+            <div class="sp-item"><div class="sp-box" style="width:4px;height:4px"></div><div class="sp-px">4</div></div>
+            <div class="sp-item"><div class="sp-box" style="width:8px;height:8px"></div><div class="sp-px">8</div></div>
+            <div class="sp-item"><div class="sp-box" style="width:12px;height:12px"></div><div class="sp-px">12</div></div>
+            <div class="sp-item"><div class="sp-box" style="width:16px;height:16px"></div><div class="sp-px">16</div></div>
+            <div class="sp-item"><div class="sp-box" style="width:20px;height:20px"></div><div class="sp-px">20</div></div>
+            <div class="sp-item"><div class="sp-box" style="width:24px;height:24px"></div><div class="sp-px">24</div></div>
+            <div class="sp-item"><div class="sp-box" style="width:32px;height:32px"></div><div class="sp-px">32</div></div>
+          </div>
+          <div class="card-label" style="margin:24px 0 14px">Radius</div>
+          <div class="grid g5">
+            <div class="rd-item"><div class="rd-box" style="border-radius:4px"></div><div class="sp-px">4 badge</div></div>
+            <div class="rd-item"><div class="rd-box" style="border-radius:6px"></div><div class="sp-px">6 row</div></div>
+            <div class="rd-item"><div class="rd-box" style="border-radius:8px"></div><div class="sp-px">8 chip</div></div>
+            <div class="rd-item"><div class="rd-box" style="border-radius:12px"></div><div class="sp-px">12 card</div></div>
+            <div class="rd-item"><div class="rd-box" style="border-radius:9999px"></div><div class="sp-px">full</div></div>
+          </div>
+        </div>
+        <div class="card" style="background:#eef1f4;border-color:#dde2ea">
+          <div class="card-label">Shadow</div>
+          <div class="grid g2" style="margin-top:6px">
+            <div class="rd-item"><div style="width:100%;height:72px;background:#fff;border-radius:10px;box-shadow:var(--shadow-card)"></div><div class="sp-nm">card</div><div class="sp-px">0 1px 2px /.05</div></div>
+            <div class="rd-item"><div style="width:100%;height:72px;background:#fff;border-radius:10px;box-shadow:var(--shadow-chip)"></div><div class="sp-nm">chip · selected</div><div class="sp-px">1px 1px 5px /.10</div></div>
+          </div>
+          <div class="use" style="font-size:11px;color:var(--ink-500);margin-top:20px;line-height:1.5">그림자는 거의 보이지 않게. 컨테이너는 그림자가 아닌 <b>#CEDBFF 1px 스트로크</b>로 정의됩니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section>
+      <div class="sec-head"><span class="sec-num">04</span><h2>Components</h2><div class="sec-rule"></div></div>
+      <div class="grid g2">
+        <div class="card">
+          <div class="card-label">Hero progress card</div>
+          <div class="hero">
+            <div class="t">레벨 2 · <span class="y">전화 배달 주문하기</span></div>
+            <div class="track"><div class="fill"></div></div>
+            <div class="d">기본적인 비즈니스 매너와 간단한 용건을 전달하고<br>메뉴를 주문하는 실전 연습입니다.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-label">Difficulty chips</div>
+          <div class="chip-row">
+            <div class="dchip on"><div class="lv">초급</div><div class="s">짧고 간단한 통화</div></div>
+            <div class="dchip off"><div class="lv">중급</div><div class="s">예상 외 상황</div></div>
+            <div class="dchip off"><div class="lv">고급</div><div class="s">실전과 동일</div></div>
+          </div>
+          <div class="card-label" style="margin:22px 0 14px">Segmented tabs</div>
+          <div class="tabs"><div class="tabbtn act">시나리오 연습</div><div class="tabbtn idle">성장 기록</div></div>
+          <div class="tabtrack"><div class="tabink"></div></div>
+        </div>
+        <div class="card">
+          <div class="card-label">Roadmap rows · 완료 / 진행 / 잠김</div>
+          <div class="lrow done"><span class="l">레벨 1 · 완료됨</span><span class="circle"><i data-lucide="check" class="ic" style="color:#fff"></i></span></div>
+          <div class="lrow active"><span class="l">레벨 2 · 진행 중</span><i data-lucide="arrow-right" class="ic" style="color:#fff"></i></div>
+          <div class="lrow lock"><span class="l">레벨 3 · 잠김</span><i data-lucide="lock" class="ic" style="color:var(--ink-400)"></i></div>
+        </div>
+        <div class="card">
+          <div class="card-label">Scenario rows</div>
+          <div class="srow"><span class="nm">배달 문의</span><span class="meta"><span class="badge">초급</span><i data-lucide="chevron-right" class="ic" style="color:var(--blue-600)"></i></span></div>
+          <div class="srow"><span class="nm">면접 결과 통보</span><span class="meta"><span class="badge">중급</span><i data-lucide="chevron-right" class="ic" style="color:var(--blue-600)"></i></span></div>
+          <div class="srow" style="margin-bottom:0"><span class="nm">관공서 문의</span><span class="meta"><span class="badge">고급</span><i data-lucide="chevron-right" class="ic" style="color:var(--blue-600)"></i></span></div>
+        </div>
+        <div class="card">
+          <div class="card-label">Buttons</div>
+          <div class="btn primary"><i data-lucide="phone-call" style="width:18px;height:18px"></i> 연습 시작하기</div>
+          <div class="btn secondary">다시 듣기</div>
+          <div class="btn ghost" style="margin-bottom:0">건너뛰기</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Status pills</div>
+          <div style="display:flex;gap:10px;margin-bottom:22px"><span class="pill p-done">완료됨</span><span class="pill p-prog">진행 중</span><span class="pill p-lock">잠김</span></div>
+          <div class="card-label">Bottom tab bar</div>
+          <div class="nav">
+            <div class="nitem"><i data-lucide="home" style="color:var(--blue-600)"></i><span class="nl" style="color:var(--blue-600);font-weight:700">홈</span></div>
+            <div class="nitem"><i data-lucide="mic" style="color:var(--ink-400)"></i><span class="nl" style="color:var(--ink-400)">연습하기</span></div>
+            <div class="nitem"><i data-lucide="phone-call" style="color:var(--ink-400)"></i><span class="nl" style="color:var(--ink-400)">통화 보조</span></div>
+            <div class="nitem"><i data-lucide="user" style="color:var(--ink-400)"></i><span class="nl" style="color:var(--ink-400)">마이페이지</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KIT -->
+    <section style="margin-bottom:0">
+      <div class="sec-head"><span class="sec-num">05</span><h2>Interactive UI Kit</h2><div class="sec-rule"></div></div>
+      <p class="lede" style="margin-bottom:16px">두 화면(연습하기 ↔ 레벨 로드맵)을 그대로 재현한 클릭형 프로토타입입니다.</p>
+      <a class="kit-link" href="ui_kits/app/index.html">UI 킷 열기 <i data-lucide="arrow-up-right" style="width:16px;height:16px"></i></a>
+    </section>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
