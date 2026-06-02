@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: var(--surface-pure); }
+  .wrap { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+  .btn { height: 52px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 16px; font-weight: 700; cursor: pointer; }
+  .primary { background: var(--blue-600); color: #fff; box-shadow: var(--shadow-card); }
+  .secondary { background: var(--surface); color: var(--blue-600); border: 1px solid var(--blue-300); }
+  .ghost { background: transparent; color: var(--ink-400); }
+  .ic { width: 18px; height: 18px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="btn primary"><i data-lucide="phone-call" class="ic"></i> 연습 시작하기</div>
+    <div class="btn secondary">다시 듣기</div>
+    <div class="btn ghost">건너뛰기</div>
+  </div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
