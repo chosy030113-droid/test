@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: #eef1f4; }
+  .wrap { padding: 28px 24px; display: flex; gap: 22px; }
+  .item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .box { width: 100%; height: 64px; background: #fff; border-radius: 10px; }
+  .s-card { box-shadow: var(--shadow-card); }
+  .s-chip { box-shadow: var(--shadow-chip); }
+  .nm { font-size: 11px; font-weight: 700; color: var(--ink-700); }
+  .px { font-family: var(--font-num); font-size: 10px; color: var(--ink-400); letter-spacing: 0; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="item"><div class="box s-card"></div><div class="nm">shadow-card</div><div class="px">0 1px 2px rgba(0,0,0,.05)</div></div>
+    <div class="item"><div class="box s-chip"></div><div class="nm">shadow-chip · selected</div><div class="px">1px 1px 5px rgba(0,0,0,.10)</div></div>
+  </div>
+</body>
+</html>
