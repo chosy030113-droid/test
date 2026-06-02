@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: var(--surface-pure); }
+  .wrap { padding: 22px 0 0; }
+  .tabs { display: flex; }
+  .tab { flex: 1; text-align: center; padding: 16px 0; font-size: 16px; position: relative; }
+  .tab.active { font-weight: 700; color: var(--ink-700); }
+  .tab.idle { color: var(--ink-400); }
+  .track { height: 2px; background: var(--blue-300); }
+  .ink { height: 2px; background: var(--blue-600); width: 50%; }
+  .cap { padding: 14px 24px 20px; font-size: 11px; color: var(--ink-400); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="tabs">
+      <div class="tab active">시나리오 연습</div>
+      <div class="tab idle">성장 기록</div>
+    </div>
+    <div style="position:relative">
+      <div class="track"></div>
+      <div class="ink" style="position:absolute;top:0;left:0"></div>
+    </div>
+    <div class="cap">Segmented tabs — active label is Bold #373B45 over a 2px #3C70FF underline; the full-width track sits in #CEDBFF.</div>
+  </div>
+</body>
+</html>
