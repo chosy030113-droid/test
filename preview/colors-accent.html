@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: var(--surface-pure); }
+  .wrap { padding: 22px 24px; }
+  .card { background: var(--blue-600); border-radius: var(--r-lg); padding: 18px 18px 20px; box-shadow: var(--shadow-card); }
+  .t { font-size: 16px; font-weight: 500; color: var(--surface); }
+  .t .y { color: var(--accent-yellow); font-weight: 700; }
+  .track { height: 10px; border-radius: 9999px; background: var(--blue-500); margin: 13px 0 6px; overflow: hidden; }
+  .fill { height: 100%; width: 38%; background: var(--accent-green); border-radius: 9999px; }
+  .sub { font-size: 13px; color: var(--blue-400); }
+  .legend { display: flex; gap: 22px; margin-top: 16px; }
+  .leg { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--ink-400); }
+  .dot { width: 14px; height: 14px; border-radius: 4px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="t">레벨 2 · <span class="y">진행 중</span></div>
+      <div class="track"><div class="fill"></div></div>
+      <div class="sub">accents live only inside the filled blue card</div>
+    </div>
+    <div class="legend">
+      <div class="leg"><span class="dot" style="background:var(--accent-green)"></span>Green · #8DFFC3 · progress fill</div>
+      <div class="leg"><span class="dot" style="background:var(--accent-yellow)"></span>Yellow · #FFF46C · active "진행 중"</div>
+    </div>
+  </div>
+</body>
+</html>
