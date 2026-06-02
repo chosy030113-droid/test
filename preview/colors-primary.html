@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: var(--surface-pure); }
+  .wrap { padding: 22px 24px; }
+  .row { display: flex; gap: 14px; }
+  .sw { flex: 1; }
+  .chip { height: 64px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.06); }
+  .nm { font-size: 12px; font-weight: 700; color: var(--ink-700); margin-top: 9px; }
+  .hex { font-family: var(--font-num); font-size: 11px; color: var(--ink-400); margin-top: 2px; letter-spacing: 0; }
+  .use { font-size: 10.5px; color: var(--ink-400); margin-top: 4px; line-height: 1.35; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="row">
+      <div class="sw"><div class="chip" style="background:var(--blue-600)"></div><div class="nm">Primary / 600</div><div class="hex">#3C70FF</div><div class="use">CTAs · active nav · hero card · headers</div></div>
+      <div class="sw"><div class="chip" style="background:var(--blue-500)"></div><div class="nm">Blue / 500</div><div class="hex">#6991FF</div><div class="use">progress track · active border</div></div>
+      <div class="sw"><div class="chip" style="background:var(--blue-400)"></div><div class="nm">Blue / 400</div><div class="hex">#A0BAFF</div><div class="use">sub-text on blue cards</div></div>
+      <div class="sw"><div class="chip" style="background:var(--blue-300)"></div><div class="nm">Blue / 300</div><div class="hex">#CEDBFF</div><div class="use">default stroke · dividers</div></div>
+    </div>
+  </div>
+</body>
+</html>
